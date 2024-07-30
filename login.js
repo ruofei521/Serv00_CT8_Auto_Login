@@ -60,7 +60,7 @@ async function sendWxpusherMessage(message) {
     return;
   }
 
-  const { appToken, uids } = wxpusherConfig;
+  const { appToken, uids, contentType, topicIds } = wxpusherConfig;
   const url = `https://wxpusher.zjiecode.com/api/send/message`;
   
   try {
@@ -71,6 +71,10 @@ async function sendWxpusherMessage(message) {
   } catch (error) {
     console.error('Error sending Wxpusher message:', error);
   }
+}
+async function sendMessage(message) {
+  await sendTelegramMessage(message);
+  await sendWxpusherMessage(message);
 }
 
 async function loginAccount(account, browser) {
