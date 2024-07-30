@@ -65,7 +65,9 @@ async function sendWxpusherMessage(message) {
   
   try {
     await axios.post(url, {
-      chat_id: uids,
+      app_token:  appToken, 
+      content_Type: contentType,
+      u_ids: uids,
       text: message
     });
   } catch (error) {
